@@ -1,21 +1,69 @@
 import './App.css';
-import Board from './Components/Board.component';
+import React, {useEffect, useState} from 'react';
+import GameBoard from './Components/GameBoard.component';
 import ControlPannel from './Components/ControlPannel.component';
+import {TIMEOUTGAME} from "./Constants";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h2>
-          Ultimate Tic Tac Toe
-        </h2>
-        <h5>I heard you like tic tac toe</h5>
-      </header>
-      <ControlPannel />
-      <Board/>
-      <footer>end</footer>
-    </div>
-  );
+
+    const [gameStarted, setGameStarted] = useState(false);
+
+    const [timer, setTimer] = useState(TIMEOUTGAME);
+    useEffect(() => {
+        let timerId;
+        if (gameStarted) {
+            let nextTimer;
+            timerId = setInterval(() => {
+                setTimer((previousState) => {
+                    nextTimer = previousState - 1;
+                    return nextTimer;
+                });
+                if (nextTimer === 0) {
+                    setGameStarted(false);
+                }
+            }, 1000);
+        } else if (timer !== TIMEOUTGAME) {
+            setTimer(TIMEOUTGAME);
+        }
+        return() => {
+            if (timerId) {
+                clearInterval(timerId);
+            }
+        };
+    }, [gameStarted]);
+
+
+    const StartGame = () => {
+        if (gameStarted === true) {
+            setGameStarted(false);
+        } else {
+            setGameStarted(true);
+        }
+    }
+
+    return (
+        <div className="App">
+            <header className="App-header">
+                <h2>
+                    Ultimate Tic Tac Toe
+                </h2>
+                <h5>I heard you like tic tac toe</h5>
+            </header>
+            <div className='container mainDiv'>
+                <div className='row'>
+                    <div className="col-md-4">
+                        <ControlPannel gameStarted={gameStarted}
+                        onGameStart={StartGame} timer={timer} />
+                    </div>
+                    <div className="col-md-8">
+                        <GameBoard/>
+                    </div>
+                </div>
+            </div>
+            
+            <footer  className="App-footer">end</footer>
+        </div>
+    );
 }
 
 export default App;
