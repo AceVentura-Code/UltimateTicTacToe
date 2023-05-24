@@ -7,6 +7,15 @@ import {TIMEOUTGAME} from "./Constants";
 function App() {
 
     const [gameStarted, setGameStarted] = useState(false);
+    const [player, setPlayer] = useState(1); // values:  1 || -1 // multiply by -1 to switch
+
+
+    const switchPlayers = () => {
+        setPlayer(player * -1);
+        console.log("now turn of player " + 
+        ( player === 1 ? 'X' : 'O' )
+        )
+    }
 
     const [timer, setTimer] = useState(TIMEOUTGAME);
     useEffect(() => {
@@ -41,6 +50,7 @@ function App() {
         }
     }
 
+
     return (
         <div className="App">
             <header className="App-header">
@@ -53,15 +63,17 @@ function App() {
                 <div className='row'>
                     <div className="col-md-4">
                         <ControlPannel gameStarted={gameStarted}
-                        onGameStart={StartGame} timer={timer} />
+                            onGameStart={StartGame}
+                            timer={timer}/>
                     </div>
                     <div className="col-md-8">
-                        <GameBoard/>
+                        <GameBoard player={player}
+                            onPlayerMove={switchPlayers}/>
                     </div>
                 </div>
             </div>
-            
-            <footer  className="App-footer">end</footer>
+
+            <footer className="App-footer">end</footer>
         </div>
     );
 }
