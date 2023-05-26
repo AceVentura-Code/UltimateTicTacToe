@@ -5,7 +5,7 @@ function GameCell({key, player, cell, onPlayerMove }) {
     const onClick = () =>{
 
     }
-
+    let text = cell === 1 ? 'x' : cell === -1 ? 'O' :  " "
 
 
     return (
@@ -13,7 +13,8 @@ function GameCell({key, player, cell, onPlayerMove }) {
             <div className='cell'  onClick={e => { cell=player; onPlayerMove(); console.log(cell);}} >
                 {/* {condition && <jsx> you wanted to render <jsx/>} */}
                 {/* <p>X</p> */}
-                <p>{cell === 1 ? 'x' : cell === -1 ? 'O' :  " "}</p>
+                <button className='btn'>X</button>
+                {/* <p>{text}</p> */}
             </div>
         </div>
     );
