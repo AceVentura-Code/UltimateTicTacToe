@@ -1,15 +1,37 @@
 import './SubGame.css';
 import GameCell from './Cell.component';
+import { useState } from 'react';
 
-function SubGame({key, GameStatus, player ,onPlayerMove}) {
+function SubGame({ key, gameStatus, player, onPlayerMove }) {
 
-    const minorGames = Array(9).fill(0)
+    // const minorGames =
+    const [minorGames, setminorGames] = useState(Array(9).fill(0));
+    // function setPlayerCell(index, player) {
+    //     minorGames[index] = player;
+    //     console.log(minorGames); setPlayerCell(index, player);
+    // }
+    const onCellClick = (index) => {
+        console.log("GameStatus" + gameStatus);
+        
+        if (!gameStatus || minorGames[index] !== 0) { return; }
+        minorGames[index] = player;
+        console.log(minorGames);
+        onPlayerMove()
+
+        if(minorGames.some(x=>x===0)){
+
+        }
+    }
+
+
     return (
         <div className='col-md-4'>
             <div className='container subgame'>
                 <div className="row">
                     {minorGames.map((item, index) => (
-                        <GameCell  key={index} player={player} cell={item} onPlayerMove={onPlayerMove} />
+                        <div className='col-md-4' onClick={e => { onCellClick(index);  }}>
+                            <GameCell key={index} cell={item} />
+                        </div>
                     ))}
                 </div>
             </div>

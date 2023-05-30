@@ -50,6 +50,10 @@ function App() {
         }
     }
 
+    // let teste1 = [  0, 0, 0, 
+    //                 0, 0, 0,
+    //                 0, 0, 0,  ]
+
 
     return (
         <div className="App">
@@ -64,11 +68,14 @@ function App() {
                     <div className="col-md-4">
                         <ControlPannel gameStarted={gameStarted}
                             onGameStart={StartGame}
-                            timer={timer}/>
+                            timer={timer}
+                            player={player}/>
                     </div>
                     <div className="col-md-8">
                         <GameBoard player={player}
-                            onPlayerMove={switchPlayers}/>
+                            onPlayerMove={switchPlayers}
+                            gameStarted={gameStarted} 
+                            onGameStart={StartGame}/>
                     </div>
                 </div>
             </div>
