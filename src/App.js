@@ -13,7 +13,7 @@ function App() {
     const switchPlayers = () => {
         setPlayer(player * -1);
         console.log("now turn of player " + 
-        ( player === 1 ? 'X' : 'O' )
+        ( player === 1 ? 'X' : 'O' ) + `(${player})`
         )
     }
 
@@ -40,6 +40,10 @@ function App() {
             }
         };
     }, [gameStarted]);
+
+    useEffect(() => {
+        setTimer(TIMEOUTGAME)
+    }, [player]);
 
 
     const StartGame = () => {

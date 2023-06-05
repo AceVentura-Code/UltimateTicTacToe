@@ -3,13 +3,16 @@ import './GameBoard.css';
 import SubGame from './SubGame.component';
 
 function GameBoard({ player, onPlayerMove, gameStarted, onGameStart }) {
-    const [gameStatus, setSubGameStatus] = useState(false);
+    // const [subGameStatus, setSubGameStatus] = useState(false);
     // const [timer, setTimer] = useState();
-    const majorGames = Array(9).fill(0)
+    // const majorGames = Array(9).fill(0)
+    const [majorGames, setMajorGames] = useState(Array(9).fill(0));
 
     useEffect(() => {
-        if (gameStarted) { setSubGameStatus(gameStarted) }
-
+        if (gameStarted) {
+            // setSubGameStatus(gameStarted);
+            setMajorGames(Array(9).fill(0));
+        }
     }, [gameStarted]);
 
     return (
@@ -17,7 +20,7 @@ function GameBoard({ player, onPlayerMove, gameStarted, onGameStart }) {
             <p>Test Board</p>
             <div className="row">
                 {majorGames.map((item, index) => (
-                    <SubGame key={index} gameStatus={gameStatus} player={player} onPlayerMove={onPlayerMove} />
+                    <SubGame key={index} gameStarted={gameStarted} player={player} onPlayerMove={onPlayerMove} />
                 ))}
             </div>
         </div>

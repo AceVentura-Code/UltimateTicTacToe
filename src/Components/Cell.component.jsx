@@ -1,7 +1,7 @@
 import './Cell.css';
 import { playerOne, playerTwo } from '../Constants';
 
-function GameCell({ key, cell, player }) {
+function GameCell({cell, player ,colorSwap}) {
 
     // let wasPressed = false;
     // let content = ' ';
@@ -18,7 +18,7 @@ function GameCell({ key, cell, player }) {
         <div className='cell' >
             {/* {condition && <jsx> you wanted to render <jsx/>} disabled={cell!==0} onClick={e => { cell = player; onPlayerMove(); console.log("cell "+ cell);}}*/}
             {/* <p>X</p> */}
-            <button className='btn btn-primary btn-lg cellBtn'>{text}</button>
+            <button className={`btn ${colorSwap} btn-lg cellBtn`}>{text}</button>
             {/* <p>{text}</p> */}
         </div>
     );
