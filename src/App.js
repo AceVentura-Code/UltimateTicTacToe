@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import GameBoard from './Components/GameBoard.component';
 import ControlPannel from './Components/ControlPannel.component';
 import {TIMEOUTGAME} from "./Constants";
+import { tab } from '@testing-library/user-event/dist/tab';
 
 function App() {
 
@@ -54,9 +55,9 @@ function App() {
         }
     }
 
-    // let teste1 = [  0, 0, 0, 
-    //                 0, 0, 0,
-    //                 0, 0, 0,  ]
+   
+
+
 
 
     return (
