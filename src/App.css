@@ -33,3 +33,18 @@
 .mainDiv {
     border: 5px solid lightblue;
 }
+
+
+.red-color{
+    background-color: red;
+}
+.green-color{
+    background-color: green;
+}
+
+.yellow-color{
+    background-color: yellow;
+}
+.blue-color{
+    background-color: lightblue;
+}

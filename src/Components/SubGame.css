@@ -1,5 +1,10 @@
 .subgame{
     border: 1px solid Red;
-    margin: 10px;
+    margin: 5px;
     padding: 0;
+}
+
+.selectable-board {
+    border: 5px solid Red;
+    margin: 1px;
 }
