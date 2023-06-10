@@ -8,7 +8,6 @@ function App() {
 
     const [gameStarted, setGameStarted] = useState(false);
     const [player, setPlayer] = useState(1); // values:  1 || -1 // multiply by -1 to switch
-    //test Git Commit
 
     const switchPlayers = () => {
         setPlayer(player * -1);
