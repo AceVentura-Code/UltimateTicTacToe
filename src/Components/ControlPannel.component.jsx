@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import './ControlPannel.css';
 
-function ControlPannel({ gameStarted, onGameStart, timer }) {
-    const [vsAi, setVsAi] = useState(false);
+function ControlPannel({ gameStarted, onGameStart, timer, vsAi, setVsAi, gamemode, setGamemode }) {
+    
     const [playerOneName, setPlayerOneName] = useState("Player");
     const [playerTwoName, setPlayerTwoName] = useState("Computer");
 
     useEffect(() => {
         console.log("vsAi = " + vsAi);
+
         console.log("playerOneName = " + playerOneName);
         console.log("playerTwoName = " + playerTwoName);
         if (vsAi) {
@@ -36,8 +37,12 @@ function ControlPannel({ gameStarted, onGameStart, timer }) {
                 <input type="text" id="PlayerOneName" name="PlayerOneName" onChange={(e) => setPlayerOneName(e.target.value)} />
                 <br />
                 <br />
-                <input type='checkbox' id="vsAi" name="vsAi" onClick={(e) => setVsAi(!vsAi)} />
+                <input type='checkbox' disabled={gameStarted} id="vsAi" name="vsAi" onClick={(e) => setVsAi(e.target.checked)} />
                 <label htmlFor="vsAi">Play against computer?</label>
+                <br />
+                <br />
+                <input type='checkbox'  disabled={gameStarted} id="gamemode" name="gamemode" onClick={(e) => setGamemode(e.target.checked)} />
+                <label htmlFor="gamemode">Restricted Gamemode?</label>
                 <br />
                 <br />
                 <label htmlFor="PlayerTwoName">Player two</label>

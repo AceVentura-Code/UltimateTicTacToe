@@ -8,6 +8,8 @@ function App() {
 
     const [gameStarted, setGameStarted] = useState(false);
     const [player, setPlayer] = useState(1); // values:  1 || -1 // multiply by -1 to switch
+    const [vsAi, setVsAi] = useState(false);
+    const [gamemode, setGamemode] = useState(false);
 
 
     const switchPlayers = () => {
@@ -68,13 +70,21 @@ function App() {
                         <ControlPannel gameStarted={gameStarted}
                             onGameStart={StartGame}
                             timer={timer}
-                            player={player}/>
+                            player={player}
+                            vsAi={vsAi}
+                            setVsAi={setVsAi}
+                            gamemode={gamemode}
+                            setGamemode={setGamemode}
+                                />
                     </div>
                     <div className="col-md-8">
                         <GameBoard player={player}
                             onPlayerMove={switchPlayers}
                             gameStarted={gameStarted} 
-                            onGameStart={StartGame}/>
+                            onGameStart={StartGame}
+                            gamemode={gamemode}
+                            vsAi={vsAi}
+                            />
                     </div>
                 </div>
             </div>
