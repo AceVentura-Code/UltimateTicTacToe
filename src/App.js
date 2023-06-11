@@ -10,7 +10,12 @@ function App() {
     const [player, setPlayer] = useState(1); // values:  1 || -1 // multiply by -1 to switch
     const [vsAi, setVsAi] = useState(false);
     const [gamemode, setGamemode] = useState(false);
+  
 
+    const [playerOneName, setPlayerOneName] = useState("Player One");
+    const [playerTwoName, setPlayerTwoName] = useState("Player Two");
+    const [playerOneChar, setPlayerOneChar] = useState("X");
+    const [playerTwoChar, setPlayerTwoChar] = useState("O");
 
     const switchPlayers = () => {
         setPlayer(player * -1);
@@ -33,8 +38,21 @@ function App() {
                     setGameStarted(false);
                 }
             }, 1000);
+            if(player == 1){
+                alert(playerOneName + " Starts")
+            }
+            else{
+                alert(playerTwoName + " Starts")
+            }
         } else if (timer !== TIMEOUTGAME) {
             setTimer(TIMEOUTGAME);
+            if(player===1 ){
+                alert("O jogador \"" + playerTwoName + "\" Ganhou o tabuleiro Completo");
+            }
+            if(player===-1 ){
+                alert("O jogador \"" + playerOneName + "\" Ganhou o tabuleiro Completo");
+            }
+            
         }
         return() => {
             if (timerId) {
@@ -52,6 +70,7 @@ function App() {
         if (gameStarted === true) {
             setGameStarted(false);
         } else {
+            setPlayer(Math.random() < 0.5 ? 1 : -1);
             setGameStarted(true);
         }
     }
@@ -73,17 +92,26 @@ function App() {
                             player={player}
                             vsAi={vsAi}
                             setVsAi={setVsAi}
-                            gamemode={gamemode}
                             setGamemode={setGamemode}
-                                />
+                            setPlayerOneChar={setPlayerOneChar}
+                            setPlayerTwoChar={setPlayerTwoChar}
+                            setPlayerOneName={setPlayerOneName}
+                            setPlayerTwoName={setPlayerTwoName}                           
+                            
+                            />
                     </div>
                     <div className="col-md-8">
                         <GameBoard player={player}
                             onPlayerMove={switchPlayers}
-                            gameStarted={gameStarted} 
+                            gameStarted={gameStarted}
+                            setGameStarted={setGameStarted}
                             onGameStart={StartGame}
                             gamemode={gamemode}
                             vsAi={vsAi}
+                            playerOneChar={playerOneChar}
+                            playerOneName={playerOneName}
+                            playerTwoChar={playerTwoChar}
+                            playerTwoName={playerTwoName}
                             />
                     </div>
                 </div>

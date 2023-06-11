@@ -5,4 +5,18 @@
 
 .playerSetup{
     margin: 2em auto;
+    
+}
+
+.playerchar{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin: 1em auto;
+}
+.P1{
+    color: green;
+}
+.P2{
+    color: red;
 }

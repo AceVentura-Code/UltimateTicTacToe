@@ -1,6 +1,7 @@
 import "./SubGame.css";
 import GameCell from "./Cell.component";
 import { useState, useEffect } from "react";
+import { playerOne, playerTwo } from "../Constants";
 
 function SubGame({
   indexOut,
@@ -15,6 +16,8 @@ function SubGame({
   setComputerToPlay,
   writeFunction,
   gameFinished,
+  playerOneChar,
+  playerTwoChar
 }) {
   const [minorGames, setMinorGames] = useState(Array(9).fill(0));
   const [colorSwap, setColorSwap] = useState("blue-color");
@@ -138,10 +141,20 @@ function SubGame({
     return 0;
   }
 
+  function getSubgameTableClass(){
+    if(player === 1){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
   return (
     <div className="col-md-4" id={"Subgame" + indexOut}>
       <div
-        className={`container subgame ${isAvailable ? "selectable-board" : ""}`}
+        className={`container subgame ${(isAvailable && gameStarted) ?  (getSubgameTableClass() ? "selectable-board-p1": "selectable-board-p2") : "selectable-board"} `}
+  
       >
         <div className="row">
           {minorGames.map((item, index) => (
@@ -156,6 +169,8 @@ function SubGame({
                 cell={item}
                 colorSwap={colorSwap}
                 isAvailable={isAvailable}
+                playerOneChar={playerOneChar}
+                playerTwoChar={playerTwoChar}
               />
             </div>
           ))}

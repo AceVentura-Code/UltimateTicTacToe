@@ -5,6 +5,16 @@
 }
 
 .selectable-board {
-    border:5px solid Red;
+    border:5px solid grey;
+    margin: 1px;
+}
+
+.selectable-board-p1 {
+    border:5px solid green;
+    margin: 1px;
+}
+
+.selectable-board-p2 {
+    border:5px solid red;
     margin: 1px;
 }
