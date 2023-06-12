@@ -1,7 +1,6 @@
 import "./SubGame.css";
 import GameCell from "./Cell.component";
 import { useState, useEffect } from "react";
-import { playerOne, playerTwo } from "../Constants";
 
 function SubGame({
   indexOut,

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './ControlPannel.css';
 
-function ControlPannel({ gameStarted, onGameStart, timer, vsAi, setVsAi, setGamemode, setPlayerOneChar, setPlayerTwoChar, setPlayerOneName,setPlayerTwoName}) {
+function ControlPannel({ gameStarted, onGameStart, timer1, timer2, vsAi, setVsAi, setGamemode, setPlayerOneChar, setPlayerTwoChar, setPlayerOneName,setPlayerTwoName}) {
  
     
 
@@ -27,11 +27,19 @@ function ControlPannel({ gameStarted, onGameStart, timer, vsAi, setVsAi, setGame
     }, [vsAi]);
     
 
+
     return (
         <div className="Pannel">
             <p>Test Pannel</p>
 
-            <div className="info"><p>Tempo de turno restante:</p><p>{timer}</p></div>
+            <div className="info">
+                
+                <p>Tempo de jogo restante P1:</p>
+                <p>{timer1}</p>
+
+                {!vsAi && <p>Tempo de jogo restante P2:</p>}
+                {!vsAi && <p>${timer2}</p>}
+            </div>
 
             <button type="button" id="btPlay" onClick={onGameStart} >
                 {gameStarted ? "Parar jogo" : "Iniciar Jogo"}

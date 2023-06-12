@@ -7,7 +7,7 @@ function GameCell({ cell, player, colorSwap, playerOneChar, playerTwoChar }) {
 
   return (
     <div className="cell">
-      <button disabled={player === 0} className={`btn ${colorSwap} cellBtn`}>
+      <button disabled={player === 0} className={`btn ${colorSwap } cellBtn`}>
         {text}
       </button>
     </div>
