@@ -150,9 +150,9 @@ function App() {
                             setPlayerOneChar={setPlayerOneChar}
                             setPlayerTwoChar={setPlayerTwoChar}
                             setPlayerOneName={setPlayerOneName}
-                            setPlayerTwoName={setPlayerTwoName}                           
-                            
-                            />
+                            setPlayerTwoName={setPlayerTwoName}
+                            playerOneChar={playerOneChar}
+                            playerTwoChar={playerTwoChar}/>
                     </div>
                     <div className="col-md-8">
                         <GameBoard player={player}
@@ -165,8 +165,7 @@ function App() {
                             playerOneChar={playerOneChar}
                             playerOneName={playerOneName}
                             playerTwoChar={playerTwoChar}
-                            playerTwoName={playerTwoName}
-                            />
+                            playerTwoName={playerTwoName}/>
                     </div>
                 </div>
             </div>
